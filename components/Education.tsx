@@ -8,7 +8,7 @@ const education = {
     degree: "Bachelor of Technology in Computer Science (AI & ML)",
     location: "Barasat, West Bengal",
     period: "July 2024 – August 2028",
-    cgpa: "9.66",
+    cgpa: "8.40",
 };
 
 export default function Education() {

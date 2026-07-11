@@ -1,6 +1,6 @@
 'use client'
 
-import { BlogCard } from '@/components/BlogCard'
+import { BlogCard } from '@/components/blog/BlogCard'
 
 import FadeIn from '@/components/FadeIn'
 import DiagonalPattern from '@/components/DiagonalPattern'

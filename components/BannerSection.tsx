@@ -25,7 +25,7 @@ export default function BannerSection({
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-6">
           <p className="text-white text-base sm:text-xl font-medium italic font-[family-name:var(--font-instrument-serif)] text-center drop-shadow-md">
-            "{quote}"
+            &ldquo;{quote}&rdquo;
           </p>
         </div>
       </div>

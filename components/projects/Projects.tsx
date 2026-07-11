@@ -19,25 +19,36 @@ type Project = {
 const projects: Project[] = [
     {
         id: 1,
-        title: "Recall | AI Second Brain Ecosystem",
+        title: "EscrowX | Decentralized Freelancer Marketplace",
         description:
-            "A modular monolith with an asynchronous pipeline for deep knowledge extraction, featuring a vector-driven knowledge graph and remote content ingestion.",
-        image: "/images/agenv.png",
-        tags: ["Next.js", "Express", "BullMQ", "Pinecone", "Cloudflare R2", "TypeScript"],
+            "A decentralized freelancer marketplace on Stellar. Implements trustless milestone-based escrow via Soroban smart contracts, funded by a $160 Stellar Grant.",
+        image: "/images/obsidianui.png",
+        tags: ["React.js", "Soroban", "Stellar", "Tailwind CSS"],
         liveUrl: "#",
-        githubUrl: "https://github.com/",
-        detailsUrl: "#",
+        githubUrl: "https://github.com/Rimanshu-Singh",
+        detailsUrl: "/projects#escrowx",
     },
     {
         id: 2,
-        title: "Learn Flow | AI Study Architect",
+        title: "GreenGrow | AI-Powered Farming Assistant Platform",
         description:
-            "AI-powered study platform that automates PDF-to-schedule generation and provides analogy-based learning paths for complex topics.",
-        image: "/images/codedevs.png",
-        tags: ["MERN Stack", "Gemini API", "Clerk", "Tailwind CSS", "TypeScript"],
+            "An agricultural advisory platform integrating LLM-based conversational AI and TensorFlow crop disease-detection. Won 3rd Prize at HackSpire.",
+        image: "/images/agenv.png",
+        tags: ["MERN Stack", "Gemini API", "Clerk", "Tailwind CSS", "TensorFlow"],
         liveUrl: "#",
-        githubUrl: "#",
-        detailsUrl: "#",
+        githubUrl: "https://github.com/Rimanshu-Singh",
+        detailsUrl: "/projects#greengrow",
+    },
+    {
+        id: 3,
+        title: "FitMind AI | AI-Powered Voice Agent Application",
+        description:
+            "Real-time voice agent and wellness platform. Integrated Gemini 2.0 and Convex. Won 1st Place at Hack4Bihar 2025.",
+        image: "/images/typegpt.png",
+        tags: ["Next.js", "TypeScript", "Socket.io", "Convex", "Gemini 2.0"],
+        liveUrl: "#",
+        githubUrl: "https://github.com/Rimanshu-Singh",
+        detailsUrl: "/projects#fitmind-ai",
     },
 ];
 

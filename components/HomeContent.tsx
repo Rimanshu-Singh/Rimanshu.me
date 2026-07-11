@@ -9,7 +9,6 @@ import ContentSection from './ContentSection'
 import SectionBorder from './SectionBorder'
 import ExperienceContent from './experience/ExperienceContent'
 import Reachout from './Reachout'
-import CallToAction from './CallToAction'
 import TechStackMarquee from './TechStackMarquee'
 import { Reveal } from './Reveal'
 import GitHubActivity from './GitHubActivity'
@@ -73,10 +72,10 @@ export default function HomeContent() {
               {/* About Section */}
               <Reveal delay={0.1}>
                 <ContentSection className="pb-6 sm:pb-8 pt-4 sm:pt-6 px-2 sm:px-0">
-                  <p className="mb-4 text-pretty   sm:text-sm font-mono">
-                    <span className="  text-muted-foreground ">– Aspiring software engineer passionate about leveraging AI, with real-world project experience and a strong
-                      foundation in scalable systems and AI-driven applications. State Hackethon Finalist & National Ideathon
-                      Finalist, seeking a challenging role leveraging skills in artificial intelligence to develop innovative solutions</span>
+                  <p className="mb-4 text-pretty sm:text-sm font-mono">
+                    <span className="text-muted-foreground">
+                      – Full-Stack Developer skilled in building scalable backend systems, REST APIs, and asynchronous architectures alongside clean, high-performance frontends using React.js, Next.js, Node.js, and TypeScript. Experienced in Agile development, system design, and AI-integrated applications, focused on delivering reliable, production-ready software.
+                    </span>
                   </p>
 
                   {/* Spotify Player Removed */}

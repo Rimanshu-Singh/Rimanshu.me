@@ -15,67 +15,51 @@ type Achievement = {
 const achievements: Achievement[] = [
     {
         id: 1,
-        title: "Hackstorm 2.26",
+        title: "Hack4Bihar 2025",
         description:
-            "Secured 4th position among multiple competing teams in this high-intensity hackathon.",
-        badge: "4TH PLACE",
-        year: "2026",
+            "Won 1st Position (Top Innovation) among 100+ competing teams for building a real-time AI voice wellness platform.",
+        badge: "1ST POSITION",
+        year: "2025",
     },
     {
         id: 2,
-        title: "India Innovates",
+        title: "HackSpire Hackathon",
         description:
-            "Finalist in World's Biggest Civic Tech Hackathon, solving critical urban challenges through technology.",
-        badge: "HACKATHON FINALIST",
+            "Won 3rd Prize in the Axicov Prize Track for developing GreenGrow, an AI-powered agricultural advisory platform.",
+        badge: "3RD PRIZE",
         year: "2025",
     },
     {
         id: 3,
-        title: "GirlScript Summer of Code (GSSoC) 2025",
+        title: "SBI Youth Ideathon",
         description:
-            "Contributed to open-source projects through the GSSoC 2025 program.",
-        badge: "CONTRIBUTOR",
-        year: "2025",
+            "Selected as a National Finalist and recognized in the Top 1000 ideas in India.",
+        badge: "NATIONAL FINALIST",
+        year: "2024",
     },
     {
         id: 4,
-        title: "Smart India Hackathon",
+        title: "Brainware AI Hackathon",
         description:
-            "Participated in the national-level hackathon hosted by the Government of India.",
-        badge: "PARTICIPANT",
+            "Ranked in the Top 20 out of more than 100 competing teams.",
+        badge: "TOP 20",
         year: "2024",
     },
     {
         id: 5,
-        title: "CodeDevs Hackathon",
+        title: "Brainware Esports Gaming Event",
         description:
-            "Built a full-stack project under 24 hours and earned recognition from judges.",
-        badge: "TOP 10",
-        year: "2024",
+            "Organized and coordinated the Esports gaming tournament at Brainware University.",
+        badge: "ORGANIZER",
+        year: "2025",
     },
     {
         id: 6,
-        title: "Open Source Contributor",
+        title: "Hackathon Evangelism & Volunteering",
         description:
-            "Active open-source contributor with merged pull requests across multiple repositories.",
-        badge: "CONTRIBUTOR",
-        year: "2024",
-    },
-    {
-        id: 7,
-        title: "TypeGPT Launch",
-        description:
-            "Launched a side project that gained significant traction within the developer community.",
-        badge: "LAUNCH",
-        year: "2024",
-    },
-    {
-        id: 8,
-        title: "AgentVerse Hackathon",
-        description:
-            "Built an AI-agent based solution using LLM orchestration frameworks.",
-        badge: "FINALIST",
-        year: "2025",
+            "Volunteered and evangelized multiple tech hackathons and community developer events.",
+        badge: "VOLUNTEER",
+        year: "2024 - Present",
     },
 ];
 

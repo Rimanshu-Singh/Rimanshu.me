@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
-import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip'
 
 interface ExperienceItem {
   id: string
@@ -22,45 +21,15 @@ export default function ExperienceContent() {
 
   const experiences: ExperienceItem[] = [
     {
-      id: 'a4f',
-      company: 'A4F',
-      position: 'AI Model Manager & Project Lead',
-      duration: 'September 2025 – December 2025',
-      description:
-        'Managing cutting-edge AI models including OpenAI GPT-5 and Claude Opus 4.5.',
+      id: 'geekglory',
+      company: 'Geekglory Pvt. Ltd.',
+      position: 'Frontend Developer Intern — Full Stack Contributions',
+      duration: 'June 2025 – October 2025',
+      description: 'Developed complete web applications and modular design systems.',
       achievements: [
-        'Providing and managing access to frontier AI models including GPT-5 and Claude Opus 4.5.',
-        'Leading project management initiatives and coordinating development efforts.',
-        'Managing and growing the A4F community with active engagement.',
-        'Developing and maintaining the full A4F website with continuous optimizations.'
-      ],
-      href: 'https://a4f.co',
-      logoUrl: '/a4f.png'
-    },
-
-    {
-      id: 'freelance-ai',
-      company: 'Freelance',
-      position: 'AI Product Engineer',
-      duration: 'Jan 2025 – Aug 2025',
-      description: 'Built AI-powered SaaS products for clients.',
-      achievements: [
-        'Developed prompt-driven AI workflows using OpenAI APIs.',
-        'Built scalable Next.js dashboards with Tailwind and ShadCN.',
-        'Integrated Stripe payments and auth systems.',
-        'Optimized inference cost and latency.'
-      ]
-    },
-    {
-      id: 'startup-frontend',
-      company: 'Stealth Startup',
-      position: 'Frontend Engineer',
-      duration: 'Jun 2024 – Dec 2024',
-      description: 'Worked on modern frontend systems.',
-      achievements: [
-        'Built responsive UI systems with React and TypeScript.',
-        'Improved Lighthouse performance score by 40%.',
-        'Collaborated closely with designers and backend engineers.'
+        'Built and deployed the complete Leadsfatafat website end-to-end and developed the internal admin panel with role-based access, CRUD operations, and RESTful API integration.',
+        'Engineered 15+ reusable frontend components and a modular design system using React.js, Next.js, TypeScript, and OOP principles, improving rendering performance by 40% and increasing code reuse by 60%.',
+        'Implemented SSR/SSG in Next.js, integrated 10+ third-party APIs, and followed Agile/Scrum with Git-based version control, cutting UI bugs by 35% through unit testing.'
       ]
     }
   ]
