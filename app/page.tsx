@@ -1,11 +1,11 @@
 'use client'
 
-import NewHeroSection from "@/components/HomeContent"
+import HomeContent from "@/components/HomeContent"
 
 export default function Home() {
   return (
     <div>
-      <NewHeroSection />
+      <HomeContent />
     </div>
   );
 }

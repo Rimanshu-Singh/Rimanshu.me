@@ -18,7 +18,7 @@ import WorkTogether from './WorkTogether'
 import Education from './Education'
 import Achievements from './Achievements'
 
-export default function NewHeroSection() {
+export default function HomeContent() {
   return (
     <div className="min-h-screen transition-colors duration-300 relative">
       <div className="relative mx-auto max-w-5xl">
@@ -40,14 +40,14 @@ export default function NewHeroSection() {
           {/* Profile Header */}
           <Reveal delay={0.2}>
             <ProfileHeader
-              name="Rimanshu Patel"
+              name="Rimanshu Singh"
               age="20"
               title="Engineer • Developer • Builder"
               profileImage="/pfp.png"
               socialLinks={{
-                twitter: "https://x.com/rimanshu_patel",
-                github: "https://github.com/rimanshupatel",
-                linkedin: "https://www.linkedin.com/in/rimanshu-patel-246a79245/",
+                twitter: "https://x.com/RimanshuSingh0",
+                github: "https://github.com/Rimanshu-Singh",
+                linkedin: "https://www.linkedin.com/in/rimanshu-singh-246a79245/",
               }}
             />
           </Reveal>
@@ -59,7 +59,7 @@ export default function NewHeroSection() {
               <Reveal delay={0.1}>
                 <ContentSection
                   subtitle="AI Engineer | Full-stack Developer"
-                  title=''
+                  title=""
                   className="mt-6"
                 >
                   <div></div>
@@ -122,7 +122,7 @@ export default function NewHeroSection() {
 
                   {/* GitHub Activity Heatmap */}
                   <div className="px-4 mb-4 sm:mb-6">
-                    <GitHubActivity username="rimanshupatel" />
+                    <GitHubActivity username="Rimanshu-Singh" />
                   </div>
                 </div>
               </Reveal>

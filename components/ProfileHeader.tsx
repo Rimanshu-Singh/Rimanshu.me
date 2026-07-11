@@ -32,8 +32,8 @@ export default function ProfileHeader({
   profileImage = "/pfp.png",
   socialLinks = {
     twitter: "https://x.com/rimanshu_patel",
-    github: "https://github.com/rimanshupatel",
-    linkedin: "https://www.linkedin.com/in/rimanshu-patel-246a79245/",
+    github: "https://github.com/Rimanshu-Singh",
+    linkedin: "https://www.linkedin.com/in/rimanshu-singh-246a79245/",
   },
 }: ProfileHeaderProps) {
   const { theme, setTheme } = useTheme();

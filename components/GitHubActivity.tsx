@@ -16,7 +16,7 @@ interface GitHubActivityProps {
     username?: string
 }
 
-export default function GitHubActivity({ username = 'rimanshupatel' }: GitHubActivityProps) {
+export default function GitHubActivity({ username = 'Rimanshu-Singh' }: GitHubActivityProps) {
     const [contributions, setContributions] = useState<ContributionWeek[]>([])
     const [totalContributions, setTotalContributions] = useState(0)
     const [loading, setLoading] = useState(true)

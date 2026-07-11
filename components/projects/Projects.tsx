@@ -24,7 +24,7 @@ const projects: Project[] = [
             "A modular monolith with an asynchronous pipeline for deep knowledge extraction, featuring a vector-driven knowledge graph and remote content ingestion.",
         image: "/images/agenv.png",
         tags: ["Next.js", "Express", "BullMQ", "Pinecone", "Cloudflare R2", "TypeScript"],
-        liveUrl: "https://synapse-sage.vercel.app/",
+        liveUrl: "#",
         githubUrl: "https://github.com/",
         detailsUrl: "#",
     },
