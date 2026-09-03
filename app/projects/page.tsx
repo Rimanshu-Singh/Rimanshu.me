@@ -23,7 +23,7 @@ export default function ProjectsPage() {
         <div className="mx-auto sm:w-[calc(100%-120px)] w-full max-w-4xl px-4 sm:px-0 pt-24">
           <Reveal delay={0.1}>
             <div className="mb-10 text-center sm:text-left">
-              <h1 className="font-serif text-4xl sm:text-5xl font-bold text-foreground mb-4">
+              <h1 className="font-serif text-4xl sm:text-5xl font-normal text-foreground mb-4">
                 Projects
               </h1>
               <p className="text-muted-foreground max-w-2xl text-sm sm:text-base font-mono">

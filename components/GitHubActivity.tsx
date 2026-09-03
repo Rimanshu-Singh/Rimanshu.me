@@ -205,7 +205,7 @@ export default function GitHubActivity({ username = 'Rimanshu-Singh' }: GitHubAc
             <div className="w-full">
                 <div className="mb-4">
                     <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Featured</p>
-                    <h3 className="text-xl font-semibold text-black dark:text-white mb-1">GitHub Activity</h3>
+                    <h3 className="text-xl sm:text-2xl font-serif font-normal text-black dark:text-white mb-1">GitHub Activity</h3>
                 </div>
                 <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
                     <p className="text-neutral-500 dark:text-neutral-400 text-center">{error}</p>
@@ -218,7 +218,7 @@ export default function GitHubActivity({ username = 'Rimanshu-Singh' }: GitHubAc
         <div className="w-full">
             <div className="mb-4">
                 <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Featured</p>
-                <h3 className="text-xl font-semibold text-black dark:text-white mb-1">GitHub Activity</h3>
+                <h3 className="text-xl sm:text-2xl font-serif font-normal text-black dark:text-white mb-1">GitHub Activity</h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400">
                     Total: <span className="font-semibold text-black dark:text-white">{totalContributions.toLocaleString()}</span> contributions
                 </p>

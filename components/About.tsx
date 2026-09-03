@@ -7,7 +7,7 @@ export default function About() {
     <section className="py-2">
       {/* Header */}
       <div className="pb-3 border-b border-dashed border-black/10 dark:border-white/10">
-        <h2 className="font-serif text-3xl sm:text-4xl text-foreground tracking-tight font-normal">
+        <h2 className="font-serif text-2xl sm:text-3xl text-foreground tracking-tight font-normal">
           About
         </h2>
       </div>
