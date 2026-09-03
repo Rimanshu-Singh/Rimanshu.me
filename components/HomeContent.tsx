@@ -85,20 +85,8 @@ export default function HomeContent() {
               <Reveal delay={0.1}>
                 <div className="sm:px-10 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
-                    <h2 className="text-xl sm:text-2xl mb-3 mt-4 sm:mt-6 font-serif text-foreground font-normal">Projects / Works</h2>
                     <Projects />
-                    <div className="px-4 flex justify-end mt-6 sm:mt-8 mb-4 sm:mb-6">
-                      <Link
-                        href="/projects"
-                        className="text-xs sm:text-sm text-black/50 dark:text-white/50 hover:text-black/80 dark:hover:text-white/80 transition-colors inline-flex items-center gap-1"
-                      >
-                        View All
-                        <span>→</span>
-                      </Link>
-                    </div>
                   </div>
-
-
 
                   {/* GitHub Activity Heatmap */}
                   <div className="px-4 mb-4 sm:mb-6">
