@@ -73,21 +73,15 @@ export default function Achievements() {
 
     return (
         <section className="py-2">
-            {/* Section label */}
-            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                Highlights
-            </p>
-
-            {/* Heading */}
-            <h2
-                className="mb-8 font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
-                style={{ fontFamily: "var(--font-space-grotesk, serif)" }}
-            >
-                Recognition &amp; Milestones
-            </h2>
+            {/* Header */}
+            <div className="pb-3 border-b border-dashed border-neutral-200 dark:border-neutral-800 mb-6">
+                <h2 className="font-serif text-2xl sm:text-3xl text-neutral-900 dark:text-neutral-100 tracking-tight font-normal">
+                    Recognition &amp; Milestones
+                </h2>
+            </div>
 
             {/* Achievement list */}
-            <div className="flex flex-col divide-y divide-border/30 dark:divide-white/5">
+            <div className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800">
                 <AnimatePresence initial={false}>
                     {visibleItems.map((item, index) => (
                         <motion.div
@@ -100,20 +94,20 @@ export default function Achievements() {
                         >
                             {/* Left — title + description */}
                             <div className="flex flex-col gap-1">
-                                <p className="text-sm font-bold leading-tight text-foreground font-sans" style={{ fontFamily: "ui-sans-serif, system-ui, sans-serif" }}  >
+                                <p className="text-sm font-bold leading-tight text-neutral-900 dark:text-neutral-100 font-sans">
                                     {item.title}
                                 </p>
-                                <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm font-sans" style={{ fontFamily: "ui-sans-serif, system-ui, sans-serif" }}>
+                                <p className="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400 sm:text-sm font-sans">
                                     {item.description}
                                 </p>
                             </div>
 
                             {/* Right — badge + year */}
                             <div className="flex shrink-0 flex-col items-end gap-1.5">
-                                <span className="inline-flex items-center rounded-md border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-400">
+                                <span className="inline-flex items-center rounded-md border border-neutral-300 bg-neutral-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 transition-colors">
                                     {item.badge}
                                 </span>
-                                <span className="text-xs text-muted-foreground/60">
+                                <span className="text-xs text-neutral-400 dark:text-neutral-500 font-sans">
                                     {item.year}
                                 </span>
                             </div>
@@ -125,7 +119,7 @@ export default function Achievements() {
             {/* Show more / less toggle */}
             <motion.button
                 onClick={() => setExpanded((prev) => !prev)}
-                className="mt-4 inline-flex items-center gap-2 rounded-xl border border-border/50 bg-muted/40 px-4 py-2.5 text-sm font-medium text-foreground/70 transition-colors hover:bg-muted/70 hover:text-foreground dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                className="mt-4 inline-flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-4 py-2.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-[#111111] dark:text-neutral-200 dark:hover:bg-neutral-800 shadow-xs"
                 whileTap={{ scale: 0.97 }}
             >
                 {expanded ? "Show less" : `Show ${hiddenCount} more milestones`}
@@ -133,7 +127,7 @@ export default function Achievements() {
                     animate={{ rotate: expanded ? 180 : 0 }}
                     transition={{ duration: 0.25 }}
                 >
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown className="h-4 w-4 text-neutral-500 dark:text-neutral-400" />
                 </motion.span>
             </motion.button>
         </section>

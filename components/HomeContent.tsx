@@ -71,8 +71,12 @@ export default function HomeContent() {
               {/* Experience Section */}
               <Reveal delay={0.1}>
                 <div className="sm:px-10 py-2">
-                  <h2 className="text-xl sm:text-2xl mb-3 mt-4 sm:mt-6 font-serif text-foreground font-normal">Professional Experience</h2>
-                  <div className="px-4">
+                  <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
+                    <div className="pb-3 border-b border-dashed border-neutral-300 dark:border-neutral-800 mb-6">
+                      <h2 className="font-serif text-2xl sm:text-3xl text-foreground tracking-tight font-normal">
+                        Professional Experience
+                      </h2>
+                    </div>
                     <ExperienceContent />
                   </div>
                 </div>
