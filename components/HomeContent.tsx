@@ -10,6 +10,7 @@ import About from './About'
 import ExperienceContent from './experience/ExperienceContent'
 import Reachout from './Reachout'
 import TechStackMarquee from './TechStackMarquee'
+import TechStack from './TechStack'
 import { Reveal } from './Reveal'
 import GitHubActivity from './GitHubActivity'
 import Projects from './projects/Projects'
@@ -88,8 +89,14 @@ export default function HomeContent() {
                     <Projects />
                   </div>
 
+                  {/* Tech Stack Section */}
+                  <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
+
+                    <TechStack />
+                  </div>
+
                   {/* GitHub Activity Heatmap */}
-                  <div className="px-4 mb-4 sm:mb-6">
+                  <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
                     <GitHubActivity username="Rimanshu-Singh" />
                   </div>
                 </div>
@@ -124,22 +131,6 @@ export default function HomeContent() {
               <Reveal delay={0.05}>
                 <SectionBorder className="mt-0 pt-0" />
               </Reveal>
-
-
-
-              {/* Tech Stack Section */}
-              <Reveal delay={0.1}>
-                <div className="sm:px-12 mt-4 sm:mt-6 mb-4 sm:mb-6">
-                  <div className="px-4">
-                    <TechStackMarquee className="w-full" />
-                  </div>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.05}>
-                <SectionBorder className="mt-0 pt-0" />
-              </Reveal>
-
 
               {/* call to action*/}
               <Reveal delay={0.1}>
