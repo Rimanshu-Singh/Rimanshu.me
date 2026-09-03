@@ -7,6 +7,7 @@ import BannerSection from './BannerSection'
 import ProfileHeader from './ProfileHeader'
 import SectionBorder from './SectionBorder'
 import About from './About'
+import ContactLinks from './ContactLinks'
 import ExperienceContent from './experience/ExperienceContent'
 import Reachout from './Reachout'
 import TechStackMarquee from './TechStackMarquee'
@@ -31,10 +32,7 @@ export default function HomeContent() {
         <div className="mx-auto sm:w-[calc(100%-120px)] w-full max-w-4xl sm:px-0 pt-20">
           {/* Banner Section */}
           <Reveal delay={0.1}>
-            <BannerSection
-              bannerImage="/banner.jpg"
-              quote="You make your own luck if you stay at it long enough."
-            />
+            <BannerSection bannerImage="/banner.jpg" />
           </Reveal>
 
           {/* Profile Header */}
@@ -42,13 +40,9 @@ export default function HomeContent() {
             <ProfileHeader
               name="Rimanshu Singh"
               age="20"
-              title="Engineer • Developer • Builder"
+              title="Full-Stack Developer"
+              location="West Bengal, IND"
               profileImage="/pfp.png"
-              socialLinks={{
-                twitter: "https://x.com/RimanshuSingh0",
-                github: "https://github.com/Rimanshu-Singh",
-                linkedin: "https://www.linkedin.com/in/rimanshu-singh-246a79245/",
-              }}
             />
           </Reveal>
 
@@ -60,6 +54,11 @@ export default function HomeContent() {
                 <div className="sm:px-10 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
                     <About />
+                  </div>
+
+                  {/* Contact Section */}
+                  <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
+                    <ContactLinks />
                   </div>
                 </div>
               </Reveal>
