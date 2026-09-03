@@ -6,6 +6,18 @@ export default function IndiaTime() {
     const [time, setTime] = useState<string>('')
 
     useEffect(() => {
+        const updateTime = () => {
+            const now = new Date()
+            const timeString = now.toLocaleTimeString('en-US', {
+                timeZone: 'Asia/Kolkata',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+            })
+            setTime(timeString)
+        }
+
         // Initial update
         updateTime()
 
@@ -14,18 +26,6 @@ export default function IndiaTime() {
 
         return () => clearInterval(interval)
     }, [])
-
-    const updateTime = () => {
-        const now = new Date()
-        const timeString = now.toLocaleTimeString('en-US', {
-            timeZone: 'Asia/Kolkata',
-            hour12: false,
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-        })
-        setTime(timeString)
-    }
 
     if (!time) return null // Avoid hydration mismatch
 

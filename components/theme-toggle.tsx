@@ -5,10 +5,11 @@ import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
+import { useMounted } from "@/hooks/useMounted"
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
+  const mounted = useMounted()
 
   const handleThemeChange = React.useCallback(() => {
     const newTheme = theme === "light" ? "dark" : "light"
@@ -21,10 +22,6 @@ export function ModeToggle() {
       setTheme(newTheme)
     }
   }, [theme, setTheme])
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
 
   if (!mounted) {
     return (

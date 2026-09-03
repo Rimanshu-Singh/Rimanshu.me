@@ -4,6 +4,7 @@ import React from 'react';
 import GitHubCalendar from 'react-github-calendar';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
+import { useMounted } from '@/hooks/useMounted';
 
 interface GitHubContributionsProps {
   username: string;
@@ -17,11 +18,7 @@ const GitHubContributions: React.FC<GitHubContributionsProps> = ({
   className = ""
 }) => {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   const theme = {
     light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],

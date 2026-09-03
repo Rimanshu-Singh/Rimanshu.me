@@ -1,4 +1,4 @@
-import { Space_Grotesk } from "next/font/google";
+import { Space_Grotesk, Newsreader } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
@@ -8,6 +8,14 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
   variable: "--font-space-grotesk",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-serif",
 });
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -20,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${spaceGrotesk.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${spaceGrotesk.variable} ${newsreader.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <meta
           name="google-site-verification"

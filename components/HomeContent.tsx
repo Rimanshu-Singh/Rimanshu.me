@@ -5,8 +5,8 @@ import PageNavigation from './Navigation'
 import DiagonalPattern from './DiagonalPattern'
 import BannerSection from './BannerSection'
 import ProfileHeader from './ProfileHeader'
-import ContentSection from './ContentSection'
 import SectionBorder from './SectionBorder'
+import About from './About'
 import ExperienceContent from './experience/ExperienceContent'
 import Reachout from './Reachout'
 import TechStackMarquee from './TechStackMarquee'
@@ -54,36 +54,17 @@ export default function HomeContent() {
           {/* Content Prose */}
           <div className="prose dark:prose-invert max-w-none">
             <div className="text-base">
-              {/* Current Role Section */}
-              <Reveal delay={0.1}>
-                <ContentSection
-                  subtitle="AI Engineer | Full-stack Developer"
-                  title=""
-                  className="mt-6"
-                >
-                  <div></div>
-                </ContentSection>
-              </Reveal>
-
-              <Reveal delay={0.05}>
-                <SectionBorder className="mt-6" />
-              </Reveal>
-
               {/* About Section */}
               <Reveal delay={0.1}>
-                <ContentSection className="pb-6 sm:pb-8 pt-4 sm:pt-6 px-2 sm:px-0">
-                  <p className="mb-4 text-pretty sm:text-sm font-mono">
-                    <span className="text-muted-foreground">
-                      – Full-Stack Developer skilled in building scalable backend systems, REST APIs, and asynchronous architectures alongside clean, high-performance frontends using React.js, Next.js, Node.js, and TypeScript. Experienced in Agile development, system design, and AI-integrated applications, focused on delivering reliable, production-ready software.
-                    </span>
-                  </p>
-
-                  {/* Spotify Player Removed */}
-                </ContentSection>
+                <div className="sm:px-10 py-2">
+                  <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
+                    <About />
+                  </div>
+                </div>
               </Reveal>
 
               <Reveal delay={0.05}>
-                <SectionBorder className="mt-6" />
+                <SectionBorder className="mt-0 pt-0" />
               </Reveal>
 
               {/* Experience Section */}

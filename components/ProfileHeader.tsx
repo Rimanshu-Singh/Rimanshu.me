@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/tooltip";
 import PortfolioStars from "./PortfolioStars";
 import Image from "next/image";
+import { useMounted } from "@/hooks/useMounted";
 
 interface ProfileHeaderProps {
   name?: string;
@@ -37,9 +38,7 @@ export default function ProfileHeader({
   },
 }: ProfileHeaderProps) {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   return (
     <div className="flex flex-col sm:flex-row sm:items-end justify-between w-full px-4 sm:px-8 gap-6 mt-4 relative z-10">
