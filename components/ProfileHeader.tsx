@@ -76,18 +76,27 @@ export default function ProfileHeader({
 }: ProfileHeaderProps) {
   const { theme, setTheme } = useTheme();
   const mounted = useMounted();
-  const [views, setViews] = useState<number | string>(1023);
+  const [views, setViews] = useState<number | string>("...");
 
   useEffect(() => {
     fetch("/api/visitors")
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.uniqueVisitors) {
-          setViews(Math.max(1023, data.uniqueVisitors));
+        if (data && typeof data.uniqueVisitors === "number" && data.uniqueVisitors > 0) {
+          setViews(data.uniqueVisitors.toLocaleString());
         }
       })
       .catch(() => {
-        setViews(1023);
+        fetch("https://komarev.com/ghpvc/?username=Rimanshupatel")
+          .then((res) => res.text())
+          .then((svg) => {
+            const matches = svg.match(/<text[^>]*>([\d,]+)<\/text>/g);
+            if (matches && matches.length > 0) {
+              const rawText = matches[matches.length - 1].replace(/<[^>]+>/g, "").trim();
+              setViews(rawText);
+            }
+          })
+          .catch(() => {});
       });
   }, []);
 
@@ -109,7 +118,7 @@ export default function ProfileHeader({
         </div>
 
         {/* Profile Details and Right Side */}
-        <div className="flex flex-row justify-between w-full items-center gap-3 pr-3 sm:pr-0 min-w-0 flex-1">
+        <div className="flex flex-row justify-between w-full items-start gap-3 pr-3 sm:pr-0 min-w-0 flex-1">
           {/* Main Info */}
           <div className="flex flex-col items-start text-left min-w-0 flex-1">
             {/* Theme Toggle Icon */}
@@ -147,28 +156,24 @@ export default function ProfileHeader({
             </p>
           </div>
 
-          {/* Right Side: Views Counter */}
-          <div className="flex shrink-0">
-            <div className="h-30 w-auto pr-4 sm:pr-7 pt-2">
-              <div className="flex gap-1 items-center text-neutral-600 dark:text-neutral-500 cursor-default overflow-hidden">
-                <svg
-                  stroke="currentColor"
-                  fill="none"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-sm sm:text-base shrink-0"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                <div className="relative h-4 sm:h-5 flex items-center justify-start min-w-[30px]">
-                  <span className="font-mono text-xs sm:text-[13px]">{views}</span>
-                </div>
+          {/* Right Side: Views Counter (Aligned to top) */}
+          <div className="flex shrink-0 self-start pt-1 sm:pt-1.5 pr-1 sm:pr-4">
+            <div className="flex gap-1 items-center text-neutral-500 dark:text-neutral-400 cursor-default overflow-hidden">
+              <svg
+                stroke="currentColor"
+                fill="none"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-3 sm:size-3.5 shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <div className="relative h-3.5 sm:h-4 flex items-center justify-start">
+                <span className="font-mono text-[10px] sm:text-xs tracking-tight">{views}</span>
               </div>
             </div>
           </div>
