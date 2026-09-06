@@ -238,22 +238,37 @@ export default function ResumePage() {
                             Projects
                           </h2>
                           <div className="space-y-3">
+                            {/* FitMind AI */}
+                            <div>
+                              <div className="flex justify-between items-baseline mb-0.5">
+                                <span className="text-[11px] font-bold text-slate-900 dark:text-white">
+                                  FitMind AI — AI Voice Fitness &amp; Wellness Platform <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">| Next.js · Convex · Gemini · LangChain · Vapi · Whisper</span>
+                                </span>
+                                <div className="flex gap-2 text-[10px] font-bold text-[#b88c5d] dark:text-[#d9b066] print-hidden">
+                                  <a href="https://github.com/Rimanshu-Singh/FitMind_Ai" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d]">Code</a>
+                                </div>
+                              </div>
+                              <ul className="list-disc pl-4 text-[10px] text-slate-600 dark:text-slate-400 space-y-0.5">
+                                <li>Led a 4-developer team to build a voice-first wellness platform, winning 1st Place at Hack4Bihar 2025 for Top Innovation among 100+ competing teams.</li>
+                                <li>Integrated Gemini 2.0 with Vapi, Whisper and ElevenLabs to power natural conversational onboarding and personalized workout &amp; meal-plan generation.</li>
+                                <li>Engineered real-time dashboard and state synchronization with Convex and Clerk authentication for seamless user history management.</li>
+                              </ul>
+                            </div>
+
                             {/* EscrowX */}
                             <div>
                               <div className="flex justify-between items-baseline mb-0.5">
                                 <span className="text-[11px] font-bold text-slate-900 dark:text-white">
-                                  EscrowX — Decentralized Freelancer Marketplace <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">| React.js · Soroban · Stellar · Tailwind CSS</span>
+                                  EscrowX — Decentralized Freelance Escrow on Stellar <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">| React · Node.js · Soroban · Stellar · Freighter · MongoDB</span>
                                 </span>
                                 <div className="flex gap-2 text-[10px] font-bold text-[#b88c5d] dark:text-[#d9b066] print-hidden">
-                                  <a href="#" className="underline hover:text-[#b88c5d]">Live</a>
-                                  <span>|</span>
-                                  <a href="https://github.com/Rimanshu-Singh" className="underline hover:text-[#b88c5d]">Code</a>
+                                  <a href="https://github.com/Rimanshu-Singh/EscrowX" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d]">Code</a>
                                 </div>
                               </div>
                               <ul className="list-disc pl-4 text-[10px] text-slate-600 dark:text-slate-400 space-y-0.5">
-                                <li>Architected a full-stack Web3 marketplace on Stellar, implementing trustless milestone-based escrow via Soroban smart contracts, funded by a $160 Stellar Grant.</li>
-                                <li>Engineered wallet-authenticated fund-locking and on-chain release logic, applying algorithm design for automated milestone validation.</li>
-                                <li>Built a scalable, responsive frontend with React.js and Tailwind CSS, integrating REST APIs under modern UI/UX and system design principles.</li>
+                                <li>Architected a full-stack Web3 marketplace on Stellar with trustless milestone escrow via Soroban smart contracts, funded by a $160 Stellar Grant.</li>
+                                <li>Engineered Freighter wallet transaction signing, on-chain fund locking, and automated dispute/refund state machines tested with 50+ users.</li>
+                                <li>Built responsive React frontend and Express/MongoDB backend with automated CI/CD pipeline and contract state synchronization.</li>
                               </ul>
                             </div>
 
@@ -261,35 +276,37 @@ export default function ResumePage() {
                             <div>
                               <div className="flex justify-between items-baseline mb-0.5">
                                 <span className="text-[11px] font-bold text-slate-900 dark:text-white">
-                                  GreenGrow — AI-Powered Farming Assistant Platform <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">| MERN · Gemini API · Clerk · Tailwind CSS</span>
+                                  GreenGrow — AI-Powered Agricultural Intelligence Platform <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">| React · Node.js · Flask · TensorFlow · Gemini · Vapi</span>
                                 </span>
                                 <div className="flex gap-2 text-[10px] font-bold text-[#b88c5d] dark:text-[#d9b066] print-hidden">
-                                  <a href="#" className="underline hover:text-[#b88c5d]">Live</a>
+                                  <a href="https://green-grow-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d]">Live</a>
                                   <span>|</span>
-                                  <a href="https://github.com/Rimanshu-Singh" className="underline hover:text-[#b88c5d]">Code</a>
+                                  <a href="https://github.com/Rimanshu-Singh/GreenGrow_v3" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d]">Code</a>
                                 </div>
                               </div>
                               <ul className="list-disc pl-4 text-[10px] text-slate-600 dark:text-slate-400 space-y-0.5">
-                                <li>Led development of a full-stack agricultural advisory platform integrating LLM-based conversational AI, winning 3rd Prize at HackSpire Hackathon.</li>
-                                <li>Built a REST API-driven Node.js/Express backend with MongoDB persistence and a Flask microservice for TensorFlow/Keras disease-detection inference across 15+ crop diseases.</li>
-                                <li>Implemented JWT-secured authentication and a real-time NLP voice assistant, delivering a responsive React/Vite dashboard with live weather and market-price API integrations.</li>
+                                <li>Led development of an agricultural advisory platform with contextual conversational AI and real-time voice, winning 3rd Prize at HackSpire.</li>
+                                <li>Trained and deployed a TensorFlow/Keras computer vision inference service capable of identifying 15+ crop diseases from plant photos.</li>
+                                <li>Integrated live weather forecasts, mandi-market price intelligence, and Gemini multimodal image/text analysis.</li>
                               </ul>
                             </div>
 
-                            {/* FitMind AI */}
+                            {/* Privora */}
                             <div>
                               <div className="flex justify-between items-baseline mb-0.5">
                                 <span className="text-[11px] font-bold text-slate-900 dark:text-white">
-                                  FitMind AI — AI-Powered Voice Agent Application <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">| Next.js · TypeScript · Socket.io · Convex</span>
+                                  Privora — Zero-Knowledge Access Layer on Midnight <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">| Next.js · Compact · Midnight · Zero-Knowledge · Lace Wallet</span>
                                 </span>
                                 <div className="flex gap-2 text-[10px] font-bold text-[#b88c5d] dark:text-[#d9b066] print-hidden">
-                                  <a href="#" className="underline hover:text-[#b88c5d]">Live</a>
+                                  <a href="https://privora-new.vercel.app/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d]">Live</a>
+                                  <span>|</span>
+                                  <a href="https://github.com/Rimanshu-Singh/Privora" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d]">Code</a>
                                 </div>
                               </div>
                               <ul className="list-disc pl-4 text-[10px] text-slate-600 dark:text-slate-400 space-y-0.5">
-                                <li>Led a 4-developer team to build a full-stack, real-time wellness platform, winning 1st Place at Hack4Bihar 2025 for Top Innovation among 100+ competing projects.</li>
-                                <li>Integrated Gemini 2.0 LLM with Vapi and LangChain to power a voice-first AI agent for natural conversation and personalized mood tracking.</li>
-                                <li>Engineered real-time sync via Socket.io/WebSockets and Convex, with Clerk authentication and CI/CD-ready deployment on Vercel using Vapi voice pipelines.</li>
+                                <li>Developed a reusable zero-knowledge credential verification primitive on Midnight, allowing users to prove access rights without exposing identity.</li>
+                                <li>Implemented Merkle-tree private allowlists, nullifier-based replay protection, and Compact smart contracts deployed on Midnight Preprod.</li>
+                                <li>Integrated Lace &amp; 1AM wallet connectors with Jest automated contract testing and GitHub Actions CI/CD.</li>
                               </ul>
                             </div>
                           </div>
