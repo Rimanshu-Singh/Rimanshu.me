@@ -18,7 +18,7 @@ import Projects from './projects/Projects'
 import WorkTogether from './WorkTogether'
 import Education from './Education'
 import Achievements from './Achievements'
-import SketchesCarousel from './SketchesCarousel'
+import GalleryCarousel from './GalleryCarousel'
 
 export default function HomeContent() {
   return (
@@ -136,11 +136,11 @@ export default function HomeContent() {
                 <SectionBorder className="mt-0 pt-0" />
               </Reveal>
 
-              {/* Sketches Carousel Section */}
+              {/* Gallery Carousel Section */}
               <Reveal delay={0.1}>
                 <div className="sm:px-10 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
-                    <SketchesCarousel />
+                    <GalleryCarousel />
                   </div>
                 </div>
               </Reveal>

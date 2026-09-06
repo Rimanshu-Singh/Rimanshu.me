@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import PageNavigation from '@/components/Navigation'
 import DiagonalPattern from '@/components/DiagonalPattern'
-import SketchesGallery from '@/components/SketchesGallery'
+import GalleryGrid from '@/components/GalleryGrid'
 import { Reveal } from '@/components/Reveal'
 
 export default function FavouritePage() {
@@ -55,17 +55,17 @@ export default function FavouritePage() {
           <Reveal delay={0.1}>
             <div className="w-full flex flex-col mb-8 pb-5 border-b border-dashed border-neutral-300 dark:border-neutral-800">
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-2">
-                Favourites
+                Gallery
               </h1>
               <p className="text-neutral-500 dark:text-neutral-400 text-sm sm:text-base">
-                A personal collection of my favorite sketches, artworks, and creative experiments.
+                A personal collection of my favorite artworks, sketches, and creative visual experiments.
               </p>
             </div>
           </Reveal>
 
-          {/* Sketches Gallery Collage */}
+          {/* Gallery Collage */}
           <Reveal delay={0.15}>
-            <SketchesGallery />
+            <GalleryGrid />
           </Reveal>
 
           {/* Section Divider & Footer */}

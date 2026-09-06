@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
   { label: "Resume", href: "/resume" },
-  { label: "Favourite", href: "/favourite" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -38,7 +38,10 @@ export default function PageNavigation() {
         {/* Center: Navigation Links (Hidden on small mobile, visible on sm+) */}
         <div className="hidden md:flex items-center gap-1 bg-black/5 dark:bg-white/5 rounded-full px-2 py-1 border border-black/5 dark:border-white/5 relative">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)) || (link.href.startsWith('#') && pathname === '/' && false); // Simple active logic, mostly valid for hash links on home
+            const isActive =
+              pathname === link.href ||
+              (link.href !== '/' && pathname.startsWith(link.href)) ||
+              (link.href === '/gallery' && (pathname.startsWith('/favourite') || pathname.startsWith('/favorite')))
 
             return (
               <Link
