@@ -20,7 +20,6 @@ const newsreader = Newsreader({
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ScrollToTop } from "@/components/ui/ScrollAnimations";
-import { SmoothScrollProvider } from "@/components/scroll-provider";
 
 export default function RootLayout({
   children,
@@ -45,9 +44,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScrollProvider>
-            <div className="relative z-10">{children}</div>
-          </SmoothScrollProvider>
+          <div className="relative z-10">{children}</div>
 
           <ScrollToTop />
         </ThemeProvider>
