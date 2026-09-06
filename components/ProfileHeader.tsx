@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useMounted } from "@/hooks/useMounted";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
+import { TextAnimate } from "@/components/ui/text-animate";
 
 const roles = [
   "Full-Stack Developer",
@@ -20,7 +21,7 @@ function RotatingProfileRole() {
     if (shouldReduceMotion) return;
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % roles.length);
-    }, 2400);
+    }, 2800);
     return () => clearInterval(timer);
   }, [shouldReduceMotion]);
 
@@ -41,20 +42,19 @@ function RotatingProfileRole() {
         Full-Stack Developer
       </span>
 
-      {/* Smooth animated role */}
+      {/* Smooth animated role with TextAnimate */}
       <span className="col-start-1 row-start-1 overflow-hidden inline-flex items-center">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.span
-            key={roles[index]}
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xs sm:text-lg font-semibold text-neutral-500 font-sans inline-block whitespace-nowrap"
-          >
-            {roles[index]}
-          </motion.span>
-        </AnimatePresence>
+        <TextAnimate
+          key={roles[index]}
+          as="span"
+          animation="blurInUp"
+          by="character"
+          duration={0.35}
+          startOnView={false}
+          className="text-xs sm:text-lg font-semibold text-neutral-500 font-sans whitespace-nowrap"
+        >
+          {roles[index]}
+        </TextAnimate>
       </span>
     </div>
   );
