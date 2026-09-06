@@ -1,9 +1,8 @@
 'use client'
-import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6";
-import { IoMdMail } from "react-icons/io";
-import { Tooltip } from "./ui/tooltip-card";
-import Image from "next/image";
 
+import React from 'react'
+import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6"
+import { IoMdMail } from "react-icons/io"
 
 interface ReachoutProps {
   title?: string
@@ -28,152 +27,126 @@ export default function Reachout({
 }: ReachoutProps) {
   return (
     <div className="sm:px-12 px-4 pb-24 sm:pb-28">
-      <div className="text-left w-full">
-        <div className="mb-4 sm:mb-6">
-          <h2 className="font-[family-name:var(--font-instrument-serif)] text-lg sm:text-xl mb-2 opacity-20 mt-4 sm:mt-6">
+      <div className="text-center w-full">
+        <div className="mb-5 sm:mb-6">
+          <h2 className="font-[family-name:var(--font-instrument-serif)] text-lg sm:text-xl mb-1.5 opacity-20 mt-4 sm:mt-6">
             {title}
           </h2>
-          <p className="opacity-20 text-md sm:text-lg mb-3 sm:mb-4">
+          <p className="opacity-20 text-sm sm:text-base mb-3 sm:mb-4">
             {subtitle}
           </p>
         </div>
 
-        <div className="flex justify-center sm:justify-start gap-3 sm:gap-3">
+        {/* Social Icon Links Centered */}
+        <div className="flex justify-center items-center gap-3 sm:gap-4 flex-wrap">
           {socialLinks.github && (
-            <Tooltip content={
-              <Image
-                width={3024}
-                height={1720}
-                src="/github.png"
-                alt="GitHub"
-                className="rounded-sm max-w-full h-auto"
-                unoptimized
-              />
-            }>
-              <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
-                href={socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  WebkitTapHighlightColor: 'transparent',
-                  WebkitTouchCallout: 'none',
-                  WebkitUserSelect: 'none',
-                  userSelect: 'none'
-                }}
-              >
-                <FaGithub className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
-                <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">GitHub</span>
-              </a>
-            </Tooltip>
+            <a
+              className="size-10 sm:size-11 flex items-center justify-center bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 hover:scale-105 transition-all duration-200 rounded-full touch-manipulation active:opacity-75 text-neutral-800 dark:text-neutral-200 shadow-xs"
+              href={socialLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
+              style={{
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
+            >
+              <FaGithub className="text-lg sm:text-xl shrink-0" />
+            </a>
           )}
 
           {socialLinks.twitter && (
-            <Tooltip content={
-              <Image
-                width={1206}
-                height={1220}
-                src="/twitter.png"
-                alt="Twitter"
-                className="rounded-sm max-w-full h-auto"
-                unoptimized
-              />
-            }>
-              <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
-                href={socialLinks.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  WebkitTapHighlightColor: 'transparent',
-                  WebkitTouchCallout: 'none',
-                  WebkitUserSelect: 'none',
-                  userSelect: 'none'
-                }}
-              >
-                <FaXTwitter className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
-                <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">Twitter</span>
-              </a>
-            </Tooltip>
+            <a
+              className="size-10 sm:size-11 flex items-center justify-center bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 hover:scale-105 transition-all duration-200 rounded-full touch-manipulation active:opacity-75 text-neutral-800 dark:text-neutral-200 shadow-xs"
+              href={socialLinks.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+              title="Twitter"
+              style={{
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
+            >
+              <FaXTwitter className="text-lg sm:text-xl shrink-0" />
+            </a>
           )}
 
           {socialLinks.linkedin && (
-            <Tooltip content={
-              <Image
-                width={1596}
-                height={1108}
-                src="/linkedin.png"
-                alt="LinkedIn"
-                className="rounded-sm max-w-full h-auto"
-                unoptimized
-              />
-            }>
-              <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  WebkitTapHighlightColor: 'transparent',
-                  WebkitTouchCallout: 'none',
-                  WebkitUserSelect: 'none',
-                  userSelect: 'none'
-                }}
-              >
-                <FaLinkedin className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
-                <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">LinkedIn</span>
-              </a>
-            </Tooltip>
+            <a
+              className="size-10 sm:size-11 flex items-center justify-center bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 hover:scale-105 transition-all duration-200 rounded-full touch-manipulation active:opacity-75 text-neutral-800 dark:text-neutral-200 shadow-xs"
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+              style={{
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
+            >
+              <FaLinkedin className="text-lg sm:text-xl shrink-0" />
+            </a>
           )}
 
           {socialLinks.mail && (
-            <Tooltip content="Contact me">
-              <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
-                href={socialLinks.mail}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  WebkitTapHighlightColor: 'transparent',
-                  WebkitTouchCallout: 'none',
-                  WebkitUserSelect: 'none',
-                  userSelect: 'none'
-                }}
-              >
-                <IoMdMail className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
-                <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">Mail</span>
-              </a>
-            </Tooltip>
+            <a
+              className="size-10 sm:size-11 flex items-center justify-center bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 hover:scale-105 transition-all duration-200 rounded-full touch-manipulation active:opacity-75 text-neutral-800 dark:text-neutral-200 shadow-xs"
+              href={socialLinks.mail}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Mail"
+              title="Mail"
+              style={{
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
+            >
+              <IoMdMail className="text-lg sm:text-xl shrink-0" />
+            </a>
           )}
 
           {socialLinks.resume && (
-            <Tooltip content={
-              <Image
-                width={1076}
-                height={1394}
-                src="/resume.png"
-                alt="Resume"
-                className="rounded-sm max-w-full h-auto"
-                unoptimized
-              />
-            }>
-              <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
-                href={socialLinks.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  WebkitTapHighlightColor: 'transparent',
-                  WebkitTouchCallout: 'none',
-                  WebkitUserSelect: 'none',
-                  userSelect: 'none'
-                }}
-              >
-                <FaPaperclip className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
-                <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">Resume</span>
-              </a>
-            </Tooltip>
+            <a
+              className="size-10 sm:size-11 flex items-center justify-center bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 hover:scale-105 transition-all duration-200 rounded-full touch-manipulation active:opacity-75 text-neutral-800 dark:text-neutral-200 shadow-xs"
+              href={socialLinks.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Resume"
+              title="Resume"
+              style={{
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
+            >
+              <FaPaperclip className="text-lg sm:text-xl shrink-0" />
+            </a>
           )}
+        </div>
+
+        {/* Availability & Response Time */}
+        <div className="mt-6 space-y-1.5 flex flex-col items-center justify-center text-center text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-sans">
+          <p className="flex items-center justify-center gap-2 text-foreground font-medium">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Currently available for freelance work and internship opportunities
+          </p>
+          <p className="text-neutral-500 dark:text-neutral-400 text-xs">
+            Response time: Usually within 24 hours
+          </p>
         </div>
 
         {/* Footer Section */}
@@ -183,7 +156,6 @@ export default function Reachout({
               <p>Design & Developed by <span className="font-medium text-black/70 dark:text-white/70">Rimanshu</span></p>
               <p>© 2026. All rights reserved.</p>
             </div>
-
           </div>
         </div>
       </div>

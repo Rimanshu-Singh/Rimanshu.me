@@ -11,8 +11,8 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
   { label: "Resume", href: "/resume" },
-  { label: "Community", href: "#community" },
-  { label: "Contact", href: "#contact" },
+  { label: "Favourite", href: "/favourite" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function PageNavigation() {

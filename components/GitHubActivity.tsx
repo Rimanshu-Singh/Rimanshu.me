@@ -1,290 +1,286 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface ContributionDay {
-    date: string
-    count: number
-    level: number
+  date: string
+  count: number
+  level: number
 }
 
 interface ContributionWeek {
-    contributionDays: ContributionDay[]
+  contributionDays: ContributionDay[]
 }
 
 interface GitHubActivityProps {
-    username?: string
+  username?: string
 }
 
 export default function GitHubActivity({ username = 'Rimanshu-Singh' }: GitHubActivityProps) {
-    const [contributions, setContributions] = useState<ContributionWeek[]>([])
-    const [totalContributions, setTotalContributions] = useState(0)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
+  const [contributions, setContributions] = useState<ContributionWeek[]>([])
+  const [totalContributions, setTotalContributions] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-    useEffect(() => {
-        const fetchContributions = async () => {
-            try {
-                setLoading(true)
+  useEffect(() => {
+    let isMounted = true
 
-                // Fetch contributions for 2025 and 2026
-                const [response2025, response2026] = await Promise.all([
-                    fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=2025`),
-                    fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=2026`)
-                ])
+    const fetchContributions = async () => {
+      try {
+        setLoading(true)
 
-                if (!response2025.ok || !response2026.ok) {
-                    throw new Error('Failed to fetch contributions')
-                }
+        // Fetch past 1 year of contributions directly using y=last
+        const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`)
 
-                const data2025 = await response2025.json()
-                const data2026 = await response2026.json()
-
-                // Combine and filter: Feb 2025 to Jan 2026
-                const allContributions: { date: string; count: number; level: number }[] = []
-
-                // Add 2025 contributions from February onwards
-                if (data2025.contributions) {
-                    data2025.contributions.forEach((day: { date: string; count: number; level: number }) => {
-                        const date = new Date(day.date)
-                        if (date.getMonth() >= 1) { // February = 1
-                            allContributions.push(day)
-                        }
-                    })
-                }
-
-                // Add 2026 contributions (January only, up to current date)
-                if (data2026.contributions) {
-                    data2026.contributions.forEach((day: { date: string; count: number; level: number }) => {
-                        const date = new Date(day.date)
-                        if (date.getMonth() === 0) { // January = 0
-                            allContributions.push(day)
-                        }
-                    })
-                }
-
-                const weeks: ContributionWeek[] = []
-                let currentWeek: ContributionDay[] = []
-                let total = 0
-                let isFirstDay = true
-
-                allContributions.forEach((day) => {
-                    const date = new Date(day.date)
-                    const dayOfWeek = date.getDay()
-
-                    // For the first day, pad the week with empty days if it doesn't start on Sunday
-                    if (isFirstDay && dayOfWeek !== 0) {
-                        for (let i = 0; i < dayOfWeek; i++) {
-                            currentWeek.push({
-                                date: '',
-                                count: 0,
-                                level: 0
-                            })
-                        }
-                        isFirstDay = false
-                    }
-                    isFirstDay = false
-
-                    if (dayOfWeek === 0 && currentWeek.length > 0) {
-                        weeks.push({ contributionDays: currentWeek })
-                        currentWeek = []
-                    }
-
-                    currentWeek.push({
-                        date: day.date,
-                        count: day.count,
-                        level: day.level
-                    })
-
-                    total += day.count
-                })
-
-                if (currentWeek.length > 0) {
-                    weeks.push({ contributionDays: currentWeek })
-                }
-
-                setContributions(weeks)
-                setTotalContributions(total)
-                setError(null)
-            } catch (err) {
-                setError('Failed to load GitHub activity')
-                console.error('Error fetching GitHub contributions:', err)
-            } finally {
-                setLoading(false)
-            }
+        if (!response.ok) {
+          throw new Error('Failed to fetch contributions from API')
         }
 
-        fetchContributions()
-    }, [username])
+        const data = await response.json()
+        const days: ContributionDay[] = data.contributions || []
 
-    const getContributionColor = (level: number) => {
-        const colors = {
-            light: [
-                'bg-neutral-100',
-                'bg-green-200',
-                'bg-green-300',
-                'bg-green-400',
-                'bg-green-600'
-            ],
-            dark: [
-                'dark:bg-neutral-800',
-                'dark:bg-green-900',
-                'dark:bg-green-700',
-                'dark:bg-green-500',
-                'dark:bg-green-400'
-            ]
+        if (!days.length) {
+          throw new Error('No contribution data found')
         }
-        return `${colors.light[level]} ${colors.dark[level]}`
-    }
 
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        // Build week columns (Sunday - Saturday)
+        const weeks: ContributionWeek[] = []
+        let currentWeek: ContributionDay[] = []
+        let isFirstDay = true
 
-    const getMonthLabels = () => {
-        if (contributions.length === 0) return []
+        days.forEach((day) => {
+          const date = new Date(day.date + 'T00:00:00')
+          const dayOfWeek = date.getDay()
 
-        const labels: { month: string; position: number }[] = []
-        let currentMonth = -1
-        let lastLabelPosition = -10 // Ensure first label always shows
-
-        contributions.forEach((week, weekIndex) => {
-            // Find a day with a valid date in this week
-            const validDay = week.contributionDays.find(day => day.date !== '')
-            if (validDay) {
-                const date = new Date(validDay.date)
-                const month = date.getMonth()
-
-                // Always add the first month, then check spacing for others
-                if (currentMonth === -1) {
-                    currentMonth = month
-                    labels.push({ month: months[month], position: weekIndex })
-                    lastLabelPosition = weekIndex
-                } else if (month !== currentMonth && weekIndex - lastLabelPosition >= 4) {
-                    currentMonth = month
-                    labels.push({ month: months[month], position: weekIndex })
-                    lastLabelPosition = weekIndex
-                } else if (month !== currentMonth) {
-                    currentMonth = month
-                }
+          // Pad initial week if not starting on Sunday
+          if (isFirstDay && dayOfWeek !== 0) {
+            for (let i = 0; i < dayOfWeek; i++) {
+              currentWeek.push({
+                date: '',
+                count: 0,
+                level: 0,
+              })
             }
+          }
+          isFirstDay = false
+
+          if (dayOfWeek === 0 && currentWeek.length > 0) {
+            weeks.push({ contributionDays: currentWeek })
+            currentWeek = []
+          }
+
+          currentWeek.push({
+            date: day.date,
+            count: day.count,
+            level: day.level,
+          })
         })
 
-        return labels
+        if (currentWeek.length > 0) {
+          while (currentWeek.length < 7) {
+            currentWeek.push({
+              date: '',
+              count: 0,
+              level: 0,
+            })
+          }
+          weeks.push({ contributionDays: currentWeek })
+        }
+
+        if (isMounted) {
+          setContributions(weeks)
+          const total = data.total?.lastYear ?? days.reduce((sum, d) => sum + d.count, 0)
+          setTotalContributions(total)
+          setError(null)
+        }
+      } catch (err) {
+        console.error('Error fetching GitHub contributions:', err)
+        if (isMounted) {
+          setError('Failed to load GitHub activity')
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false)
+        }
+      }
     }
 
-    const monthLabels = getMonthLabels()
-    const totalWeeks = contributions.length
+    fetchContributions()
 
-    if (loading) {
-        return (
-            <div className="w-full">
-                <div className="mb-4">
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Featured</p>
-                    <h3 className="text-xl font-semibold text-black dark:text-white mb-1">GitHub Activity</h3>
-                    <div className="h-4 w-40 bg-neutral-200 dark:bg-neutral-700 rounded animate-pulse" />
-                </div>
-                <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-4 sm:p-6">
-                    <div className="grid grid-cols-[repeat(53,1fr)] gap-[2px]">
-                        {Array.from({ length: 53 }).map((_, weekIndex) => (
-                            <div key={weekIndex} className="flex flex-col gap-[2px]">
-                                {Array.from({ length: 7 }).map((_, dayIndex) => (
-                                    <div
-                                        key={dayIndex}
-                                        className="aspect-square w-full rounded-[2px] bg-neutral-200 dark:bg-neutral-700 animate-pulse"
-                                    />
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        )
+    return () => {
+      isMounted = false
     }
+  }, [username])
 
-    if (error) {
-        return (
-            <div className="w-full">
-                <div className="mb-4">
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Featured</p>
-                    <h3 className="text-xl sm:text-2xl font-serif font-normal text-black dark:text-white mb-1">GitHub Activity</h3>
-                </div>
-                <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
-                    <p className="text-neutral-500 dark:text-neutral-400 text-center">{error}</p>
-                </div>
-            </div>
-        )
+  const getContributionColor = (level: number) => {
+    switch (level) {
+      case 1:
+        return 'bg-emerald-200 dark:bg-emerald-950 border border-emerald-300/40 dark:border-emerald-800/40'
+      case 2:
+        return 'bg-emerald-300 dark:bg-emerald-800 border border-emerald-400/40 dark:border-emerald-700/40'
+      case 3:
+        return 'bg-emerald-400 dark:bg-emerald-600 border border-emerald-500/40 dark:border-emerald-500/40'
+      case 4:
+        return 'bg-emerald-600 dark:bg-emerald-400 border border-emerald-600/40 dark:border-emerald-300/40'
+      default:
+        return 'bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200/50 dark:border-neutral-700/30'
     }
+  }
 
-    return (
-        <div className="w-full">
-            <div className="mb-4">
-                <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Featured</p>
-                <h3 className="text-xl sm:text-2xl font-serif font-normal text-black dark:text-white mb-1">GitHub Activity</h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                    Total: <span className="font-semibold text-black dark:text-white">{totalContributions.toLocaleString()}</span> contributions
-                </p>
-            </div>
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
+  const getMonthLabels = () => {
+    if (contributions.length === 0) return []
+
+    const labels: { month: string; position: number }[] = []
+    let currentMonth = -1
+    let lastLabelPosition = -5
+
+    contributions.forEach((week, weekIndex) => {
+      const validDay = week.contributionDays.find((day) => day.date !== '')
+      if (validDay) {
+        const date = new Date(validDay.date + 'T00:00:00')
+        const month = date.getMonth()
+
+        if (month !== currentMonth) {
+          if (weekIndex - lastLabelPosition >= 3) {
+            labels.push({ month: months[month], position: weekIndex })
+            lastLabelPosition = weekIndex
+          }
+          currentMonth = month
+        }
+      }
+    })
+
+    return labels
+  }
+
+  const monthLabels = getMonthLabels()
+  const totalWeeks = contributions.length || 53
+
+  return (
+    <div className="w-full">
+      {/* Section Header */}
+      <div className="flex items-center justify-between pb-3 border-b border-dashed border-neutral-300 dark:border-neutral-800 mb-6">
+        <h2 className="font-serif text-2xl sm:text-3xl text-foreground tracking-tight font-normal">
+          GitHub Activity
+        </h2>
+        <a
+          href={`https://github.com/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs sm:text-sm text-neutral-500 hover:text-foreground font-mono transition-colors"
+        >
+          @{username}
+        </a>
+      </div>
+
+      {loading ? (
+        <div className="w-full rounded-2xl border border-dashed border-neutral-300 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/20 p-4 sm:p-6">
+          <div className="h-4 w-48 bg-neutral-200 dark:bg-neutral-800 rounded mb-4 animate-pulse" />
+          <div className="overflow-x-auto pb-2">
             <div
-                className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-4 sm:p-6 shadow-sm"
-                role="img"
-                aria-label={`GitHub contribution graph showing ${totalContributions} contributions in the last year`}
+              className="grid gap-[3px] min-w-[650px]"
+              style={{ gridTemplateColumns: `repeat(${totalWeeks}, 1fr)` }}
             >
-                {/* Month labels - responsive positioning */}
-                <div className="relative mb-2">
+              {Array.from({ length: totalWeeks }).map((_, weekIndex) => (
+                <div key={weekIndex} className="flex flex-col gap-[3px]">
+                  {Array.from({ length: 7 }).map((_, dayIndex) => (
                     <div
-                        className="grid text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-400"
-                        style={{ gridTemplateColumns: `repeat(${totalWeeks || 53}, 1fr)` }}
-                    >
-                        {monthLabels.map((label, index) => (
-                            <div
-                                key={index}
-                                className="text-left"
-                                style={{ gridColumn: label.position + 1 }}
-                            >
-                                {label.month}
-                            </div>
-                        ))}
-                    </div>
+                      key={dayIndex}
+                      className="aspect-square w-full rounded-[2px] bg-neutral-200 dark:bg-neutral-800 animate-pulse"
+                    />
+                  ))}
                 </div>
-
-                {/* Contribution grid - fits container width */}
-                <div
-                    className="grid gap-[2px]"
-                    style={{ gridTemplateColumns: `repeat(${totalWeeks || 53}, 1fr)` }}
-                >
-                    {contributions.map((week, weekIndex) => (
-                        <div key={weekIndex} className="flex flex-col gap-[2px]">
-                            {week.contributionDays.map((day, dayIndex) => (
-                                <div
-                                    key={dayIndex}
-                                    className={`aspect-square w-full rounded-[2px] transition-colors ${getContributionColor(day.level)}`}
-                                    title={`${day.count} contributions on ${new Date(day.date).toLocaleDateString('en-US', {
-                                        weekday: 'short',
-                                        month: 'short',
-                                        day: 'numeric',
-                                        year: 'numeric'
-                                    })}`}
-                                    aria-label={`${day.count} contributions on ${day.date}`}
-                                />
-                            ))}
-                        </div>
-                    ))}
-                </div>
-
-                {/* Legend */}
-                <div className="flex items-center justify-end mt-4 gap-2 text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-400">
-                    <span>Less</span>
-                    <div className="flex gap-[2px]">
-                        {[0, 1, 2, 3, 4].map((level) => (
-                            <div
-                                key={level}
-                                className={`w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] rounded-[2px] ${getContributionColor(level)}`}
-                            />
-                        ))}
-                    </div>
-                    <span>More</span>
-                </div>
+              ))}
             </div>
+          </div>
         </div>
-    )
+      ) : error ? (
+        <div className="w-full rounded-2xl border border-dashed border-neutral-300 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/20 p-6 text-center">
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm">{error}</p>
+        </div>
+      ) : (
+        <div className="w-full rounded-2xl border border-dashed border-neutral-300 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/20 p-4 sm:p-6">
+          <div className="mb-3 flex items-center justify-between">
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-sans">
+              <span className="font-semibold text-foreground">{totalContributions.toLocaleString()}</span> contributions in the last year
+            </p>
+          </div>
+
+          <div className="overflow-x-auto pb-1">
+            <div className="min-w-[650px]">
+              {/* Month Labels */}
+              <div
+                className="grid text-[10px] text-neutral-500 dark:text-neutral-400 mb-2 font-mono"
+                style={{ gridTemplateColumns: `repeat(${totalWeeks}, 1fr)` }}
+              >
+                {monthLabels.map((label, index) => (
+                  <div
+                    key={index}
+                    className="text-left"
+                    style={{ gridColumn: label.position + 1 }}
+                  >
+                    {label.month}
+                  </div>
+                ))}
+              </div>
+
+              {/* Contribution Grid */}
+              <div
+                className="grid gap-[3px]"
+                style={{ gridTemplateColumns: `repeat(${totalWeeks}, 1fr)` }}
+              >
+                {contributions.map((week, weekIndex) => (
+                  <div key={weekIndex} className="flex flex-col gap-[3px]">
+                    {week.contributionDays.map((day, dayIndex) => {
+                      if (!day.date) {
+                        return (
+                          <div
+                            key={dayIndex}
+                            className="aspect-square w-full rounded-[2px] opacity-0 pointer-events-none"
+                          />
+                        )
+                      }
+
+                      return (
+                        <div
+                          key={dayIndex}
+                          className={`aspect-square w-full rounded-[2px] transition-all hover:scale-125 hover:z-10 cursor-pointer ${getContributionColor(
+                            day.level
+                          )}`}
+                          title={`${day.count} contribution${day.count === 1 ? '' : 's'} on ${new Date(
+                            day.date + 'T00:00:00'
+                          ).toLocaleDateString('en-US', {
+                            weekday: 'short',
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })}`}
+                        />
+                      )
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Legend */}
+          <div className="flex items-center justify-end mt-4 gap-2 text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-sans">
+            <span>Less</span>
+            <div className="flex gap-[3px] items-center">
+              {[0, 1, 2, 3, 4].map((level) => (
+                <div
+                  key={level}
+                  className={`w-[10px] h-[10px] rounded-[2px] ${getContributionColor(level)}`}
+                />
+              ))}
+            </div>
+            <span>More</span>
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }

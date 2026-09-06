@@ -255,6 +255,22 @@
   animation: blink 1s step-end infinite;
 }
 
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite !important;
+}
+
+.animate-marquee-reverse {
+  animation: marquee var(--duration, 40s) linear infinite reverse !important;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 40s) linear infinite !important;
+}
+
+.animate-marquee-vertical-reverse {
+  animation: marquee-vertical var(--duration, 40s) linear infinite reverse !important;
+}
+
 
 
 
