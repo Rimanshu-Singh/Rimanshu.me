@@ -12,12 +12,12 @@ export default function BannerSection({
 }: BannerSectionProps) {
   return (
     <div className="w-full px-4 sm:px-8 mb-4 relative">
-      <div className="relative rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-xs">
+      <div className="w-full h-32 sm:h-52 overflow-hidden relative z-0 rounded-xs border border-neutral-200 dark:border-neutral-800 shadow-xs">
         <Image
           alt="Banner"
           width={1240}
           height={400}
-          className="w-full h-[180px] sm:h-[240px] md:h-[260px] object-cover"
+          className="w-full h-full object-cover object-center"
           src={bannerImage}
           priority
         />
