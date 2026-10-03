@@ -31,7 +31,7 @@ export default function WorkTogether() {
             {/* Actions */}
             <div className="flex items-center justify-center gap-2">
                 <Link
-                    href="mailto:vedantlavale@gmail.com"
+                    href="mailto:rimanshupatel1@gmail.com"
                     className="inline-flex h-9 items-center justify-center gap-2 rounded-md border bg-background px-4 py-2 text-sm font-medium shadow-xs transition-all hover:bg-accent hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
                 >
                     Email Me
