@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { CONTACT_LINKS } from '@/lib/constants'
 
 interface CallToActionProps {
   profileImage?: string
@@ -14,7 +15,7 @@ export default function CallToAction({
   profileImage = "/pfp.png",
   profileAlt = "Rimanshu Patel",
   linkText = "Book a Free Call",
-  linkUrl = "https://x.com/rimanshu_patel",
+  linkUrl = CONTACT_LINKS.x,
   preText = "If you've read this far, you might be interested in what I do."
 }: CallToActionProps) {
 

@@ -13,6 +13,7 @@ import {
   Briefcase,
   MapPin,
 } from 'lucide-react'
+import { CONTACT_LINKS, CONTACT_EMAIL } from '@/lib/constants'
 
 export default function ResumePage() {
   const [zoom, setZoom] = useState<number>(100)
@@ -176,15 +177,15 @@ export default function ResumePage() {
                           <div className="text-center text-[10px] font-sans tracking-wide text-slate-700 dark:text-slate-300 mt-2 leading-relaxed">
                             <span className="font-medium">+91 62055 34921</span>
                             <span className="mx-1.5 text-slate-400">|</span>
-                            <a href="mailto:rimanshupatel1@gmail.com" className="underline hover:text-[#b88c5d] dark:hover:text-[#d9b066] transition-colors">
-                              rimanshupatel1@gmail.com
+                            <a href={CONTACT_LINKS.email} className="underline hover:text-[#b88c5d] dark:hover:text-[#d9b066] transition-colors">
+                              {CONTACT_EMAIL}
                             </a>
                             <span className="mx-1.5 text-slate-400">|</span>
-                            <a href="https://linkedin.com/in/rimanshu-singh-246a79245/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d] dark:hover:text-[#d9b066] transition-colors">
+                            <a href={CONTACT_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d] dark:hover:text-[#d9b066] transition-colors">
                               linkedin.com/in/rimanshu-singh-246a79245
                             </a>
                             <span className="mx-1.5 text-slate-400">|</span>
-                            <a href="https://github.com/Rimanshu-Singh" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d] dark:hover:text-[#d9b066] transition-colors">
+                            <a href={CONTACT_LINKS.github} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#b88c5d] dark:hover:text-[#d9b066] transition-colors">
                               github.com/Rimanshu-Singh
                             </a>
                             <br />

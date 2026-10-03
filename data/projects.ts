@@ -15,7 +15,7 @@ export const projects: Project[] = [
       "Real-time dashboard and user data with Convex",
       "1st Place — Hack4Bihar 2025"
     ],
-    liveLink: "https://github.com/Rimanshu-Singh/FitMind_Ai",
+    // liveLink: pending deployed URL
     githubLink: "https://github.com/Rimanshu-Singh/FitMind_Ai",
     image: "/images/obsidianui.png",
     gradient: "from-white via-lime-400 to-slate-950",
@@ -48,7 +48,7 @@ export const projects: Project[] = [
       "Dispute/refund lifecycle",
       "50+ test users & $160 Stellar Grant"
     ],
-    liveLink: "https://github.com/Rimanshu-Singh/EscrowX",
+    // liveLink: pending deployed URL
     githubLink: "https://github.com/Rimanshu-Singh/EscrowX",
     image: "/images/typegpt.png",
     gradient: "from-white via-rose-400 to-slate-950",

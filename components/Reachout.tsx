@@ -4,6 +4,8 @@ import React from 'react'
 import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6"
 import { IoMdMail } from "react-icons/io"
 
+import { SOCIAL_LINKS } from '@/lib/constants'
+
 interface ReachoutProps {
   title?: string
   subtitle?: string
@@ -20,9 +22,11 @@ export default function Reachout({
   title = "Let's connect",
   subtitle = "Find me on these platforms",
   socialLinks = {
-    twitter: "https://x.com/rimanshu_patel",
-    github: "https://github.com/Rimanshu-Singh",
-    linkedin: "https://www.linkedin.com/in/rimanshu-singh-009277356/",
+    twitter: SOCIAL_LINKS.twitter,
+    github: SOCIAL_LINKS.github,
+    linkedin: SOCIAL_LINKS.linkedin,
+    mail: SOCIAL_LINKS.mail,
+    resume: SOCIAL_LINKS.resume,
   }
 }: ReachoutProps) {
   return (

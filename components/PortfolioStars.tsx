@@ -12,7 +12,7 @@ export default function PortfolioStars() {
     const fetchStars = async () => {
       try {
         // Try our API first
-        const response = await fetch('/api/github-stars?owner=rimanshupatel&repo=sleek-portfolio')
+        const response = await fetch('/api/github-stars?owner=Rimanshu-Singh&repo=sleek-portfolio')
         const data = await response.json()
 
         if (data.success && data.stars > 0) {

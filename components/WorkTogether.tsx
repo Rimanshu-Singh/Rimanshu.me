@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Plus, ArrowRight } from "lucide-react";
+import { CONTACT_LINKS } from "@/lib/constants";
 
 export default function WorkTogether() {
     return (
@@ -31,21 +32,23 @@ export default function WorkTogether() {
             {/* Actions */}
             <div className="flex items-center justify-center gap-2">
                 <Link
-                    href="mailto:rimanshupatel1@gmail.com"
+                    href={CONTACT_LINKS.email}
                     className="inline-flex h-9 items-center justify-center gap-2 rounded-md border bg-background px-4 py-2 text-sm font-medium shadow-xs transition-all hover:bg-accent hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
                 >
                     Email Me
                 </Link>
 
-                <Link
-                    href="https://cal.com/0xvedant/30min?user=0xVedant"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
-                >
-                    Book a Call
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                {CONTACT_LINKS.cal ? (
+                    <Link
+                        href={CONTACT_LINKS.cal}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+                    >
+                        Book a Call
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                ) : null}
             </div>
         </div>
     );

@@ -66,25 +66,6 @@ export default function Projects() {
                     project.gradient || "from-white via-lime-400 to-slate-950"
                   } transition-colors duration-700 shadow-xs`}
                 >
-                  {/* Card 2 Specific: Camera Frame Overlay */}
-                  {idx === 1 && (
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10 font-mono text-[9px] text-white">
-                      <div className="absolute top-4 left-4 w-3 h-3 border-t-2 border-l-2 border-white/60" />
-                      <div className="absolute top-4 right-4 w-3 h-3 border-t-2 border-r-2 border-white/60" />
-                      <div className="absolute bottom-4 left-4 w-3 h-3 border-b-2 border-l-2 border-white/60" />
-                      <div className="absolute bottom-4 right-4 w-3 h-3 border-b-2 border-r-2 border-white/60" />
-                      <div className="absolute top-4 left-9 flex items-center gap-1 text-[8px] font-semibold text-white/70">
-                        <span className="size-1.5 rounded-full bg-rose-500 animate-pulse" />
-                        REC
-                      </div>
-                      <div className="absolute top-4 right-9 text-[8px] text-white/70 font-semibold">ISO 400</div>
-                      <div className="absolute inset-0 m-auto w-4 h-4 flex items-center justify-center opacity-40">
-                        <div className="w-4 h-[1px] bg-white absolute" />
-                        <div className="h-4 w-[1px] bg-white absolute" />
-                      </div>
-                    </div>
-                  )}
-
                   {/* Card 3 Specific: JSON Inspector Overlay */}
                   {idx === 2 && (
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">

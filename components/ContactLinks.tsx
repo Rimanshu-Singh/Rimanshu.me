@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
+import { CONTACT_LINKS } from "@/lib/constants";
 
 interface ContactLinkItem {
   name: string;
@@ -15,31 +16,31 @@ interface ContactLinkItem {
 const contactLinks: ContactLinkItem[] = [
   {
     name: "GitHub",
-    href: "https://github.com/Rimanshu-Singh",
+    href: CONTACT_LINKS.github,
     icon: <FaGithub className="w-4 h-4" />,
     isExternal: true,
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/rimanshu-singh-246a79245/",
+    href: CONTACT_LINKS.linkedin,
     icon: <FaLinkedin className="w-4 h-4" />,
     isExternal: true,
   },
   {
     name: "Twitter",
-    href: "https://x.com/RimanshuSingh0",
+    href: CONTACT_LINKS.x,
     icon: <FaXTwitter className="w-4 h-4" />,
     isExternal: true,
   },
   {
     name: "Mail",
-    href: "mailto:rimanshusingh0000@gmail.com",
+    href: CONTACT_LINKS.email,
     icon: <HiOutlineMail className="w-4 h-4" />,
     isExternal: true,
   },
   {
     name: "Resume",
-    href: "/resume",
+    href: CONTACT_LINKS.resume,
     icon: <FaPaperclip className="w-4 h-4" />,
     isExternal: false,
   },
@@ -62,15 +63,11 @@ export default function ContactLinks() {
           const isLastItem = index === contactLinks.length - 1;
 
           const content = (
-            <div className={`flex items-center gap-2.5 p-3 sm:p-3.5 hover:bg-neutral-50 dark:hover:bg-neutral-900/50 transition-colors group cursor-pointer h-full ${
-              !isLastCol ? "md:border-r md:border-dashed md:border-neutral-200 md:dark:border-neutral-800" : ""
-            } ${
-              !isLastItem ? "border-b md:border-b-0 border-dashed border-neutral-200 dark:border-neutral-800" : ""
-            } ${
-              index % 2 === 0 ? "border-r sm:border-r-0 border-dashed border-neutral-200 dark:border-neutral-800" : ""
-            } ${
-              (index + 1) % 3 !== 0 && index < 3 ? "sm:border-r sm:border-dashed sm:border-neutral-200 sm:dark:border-neutral-800" : ""
-            }`}>
+            <div className={`flex items-center gap-2.5 p-3 sm:p-3.5 hover:bg-neutral-50 dark:hover:bg-neutral-900/50 transition-colors group cursor-pointer h-full ${!isLastCol ? "md:border-r md:border-dashed md:border-neutral-200 md:dark:border-neutral-800" : ""
+              } ${!isLastItem ? "border-b md:border-b-0 border-dashed border-neutral-200 dark:border-neutral-800" : ""
+              } ${index % 2 === 0 ? "border-r sm:border-r-0 border-dashed border-neutral-200 dark:border-neutral-800" : ""
+              } ${(index + 1) % 3 !== 0 && index < 3 ? "sm:border-r sm:border-dashed sm:border-neutral-200 sm:dark:border-neutral-800" : ""
+              }`}>
               {/* Icon badge */}
               <div className="w-9 h-9 rounded-xl border border-neutral-200 dark:border-neutral-700/80 bg-neutral-100/90 dark:bg-neutral-800/80 flex items-center justify-center text-neutral-800 dark:text-neutral-200 shrink-0 group-hover:scale-105 transition-transform shadow-xs">
                 {link.icon}
